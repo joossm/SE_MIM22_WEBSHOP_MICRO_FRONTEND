@@ -16,16 +16,17 @@ export const NavBar = styled.div`
 `
 
 export const NavItem = styled(Link)<{ active: boolean }>`
-  text-decoration: none;
-  min-width: 100px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: ${({ active }) => (active ? 'black' : 'grey')};
+  justify-content: center;
+  min-width: 100px;
   padding: 5px;
+  margin-right: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  color: ${({ active }) => (active ? 'black' : 'grey')};
   background-color: ${({ active }) =>
     active ? 'rgb(246, 248, 252)' : 'white'};
-  margin-right: 10px;
 
   :hover {
     color: black;

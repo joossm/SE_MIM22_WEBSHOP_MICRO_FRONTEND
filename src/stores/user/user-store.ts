@@ -1,6 +1,6 @@
 import { makeObservable, observable } from 'mobx'
-import { dummyUser } from './user-store.dummy'
 
+import { dummyUser } from './user-store.dummy'
 import { UserT } from './user-store.types'
 
 class UserStore {
@@ -17,7 +17,7 @@ class UserStore {
 
   login(userName: string, password: string): void {
     this.isLoggedIn = true
-    this.user = dummyUser
+    this.user = { ...dummyUser, userName: userName, password: password }
   }
 
   logout(): void {

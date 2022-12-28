@@ -1,8 +1,9 @@
 import { observer } from 'mobx-react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
+
 import basketStore from '../../stores/basket/basket-store'
 import userStore from '../../stores/user/user-store'
+
 import {
   LoggeedInBadge,
   LogoutButton,
@@ -20,7 +21,7 @@ export const Navigation = observer(() => {
           Home
         </NavItem>
         <NavItem href="/basket" active={router.pathname === '/basket'}>
-          Basket ({basketStore.numberOfBooks()})
+          Basket ({basketStore.numberOfBooks})
         </NavItem>
       </div>
       <LoggeedInBadge>

@@ -12,3 +12,7 @@ export const Row = styled.div`
   column-gap: 10px;
   flex-wrap: wrap;
 `
+
+export const ButtonStyled = styled.button`
+  align-self: center;
+`

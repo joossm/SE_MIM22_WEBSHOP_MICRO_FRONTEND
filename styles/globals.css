@@ -13,13 +13,14 @@ button {
   padding: 5px 20px;
   border: none;
   cursor: pointer;
-  width: min-content;
-}
-button:disabled {
-  cursor: auto;
+  width: max-content;
 }
 button:hover {
   background-color: rgba(78, 137, 254, 1);
+}
+button:disabled {
+  cursor: auto;
+  background-color: rgba(52, 120, 255, 0.3);
 }
 
 input {

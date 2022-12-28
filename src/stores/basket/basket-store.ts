@@ -1,12 +1,11 @@
 import { computed, makeObservable, observable } from 'mobx'
 
 import { BookT } from '../../components/book/book.types'
-import userStore from '../user/user-store'
 
 import { BasketT } from './basket-store.types'
 
 class BasketStore {
-  basket: BasketT = {
+  basket?: BasketT = {
     basketId: 1,
     books: [],
     customerId: 1,
@@ -16,6 +15,8 @@ class BasketStore {
     makeObservable(this, {
       basket: observable,
       isEmpty: computed,
+      basketAmount: computed,
+      numberOfBooks: computed,
     })
     this.basket = {
       basketId: 1,
@@ -24,31 +25,45 @@ class BasketStore {
     }
   }
 
-  addToBasket(book: BookT): void {
-    console.log(book, this.basket.books)
-    const addedBook = this.basket.books.find(
-      basketEntry => basketEntry.book === book
-    )
-
-    if (addedBook) {
-      addedBook.amount += 1
-      console.log(this.basket.books)
-    } else {
-      this.basket?.books.push({ book: book, amount: 1 })
-    }
+  get isEmpty(): boolean {
+    return this.basket !== undefined && this.basket?.books.length === 0
   }
 
-  numberOfBooks = (): number => {
+  get basketAmount(): number {
+    let price = 0
+    this.basket?.books.forEach(entry => {
+      price += entry.amount * entry.book.price
+    })
+
+    return price
+  }
+
+  get numberOfBooks(): number {
     let amount = 0
-    this.basket.books.forEach(book => {
+    this.basket?.books.forEach(book => {
       amount += book.amount
     })
-    console.log(amount)
     return amount
   }
 
-  get isEmpty(): boolean {
-    return this.basket.books.length === 0
+  purchaseBooks(): void {
+    // TODO call endpoint
+
+    this.basket = undefined
+  }
+
+  addToBasket(book: BookT): void {
+    const addedBook = this.basket?.books.find(
+      basketEntry => basketEntry.book.id === book.id
+    )
+
+    if (addedBook) {
+      // TODO call endpoint
+      addedBook.amount += 1
+    } else {
+      // TODO call endpoint
+      this.basket?.books.push({ book: book, amount: 1 })
+    }
   }
 }
 

@@ -1,6 +1,8 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Field } from 'formik'
+
 import userStore from '../../stores/user/user-store'
-import { FormStyled, Row } from './register-form.styles'
+
+import { FormStyled, Row, ButtonStyled } from './register-form.styles'
 
 export const RegisterForm = () => {
   return (
@@ -48,7 +50,7 @@ export const RegisterForm = () => {
             placeholder="Please choose a password"
           />
 
-          <button type="submit">Register</button>
+          <ButtonStyled type="submit">Register</ButtonStyled>
         </FormStyled>
       </Formik>
     </>

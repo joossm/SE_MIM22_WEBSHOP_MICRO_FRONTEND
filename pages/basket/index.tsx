@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import { BasketList } from '../src/components/basket-list/basket-list'
+import { BasketList } from '../../src/components/basket-list/basket-list'
 
 function Basket() {
   return (

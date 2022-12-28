@@ -1,8 +1,10 @@
 import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
+
 import { BasketIcon } from '../../../public/icons/basket-icon'
 
 import basketStore from '../../stores/basket/basket-store'
+
 import Modal from '../modal/modal'
 
 import {
