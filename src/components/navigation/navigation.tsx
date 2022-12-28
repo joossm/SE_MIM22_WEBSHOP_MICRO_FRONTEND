@@ -3,7 +3,12 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import basketStore from '../../stores/basket/basket-store'
 import userStore from '../../stores/user/user-store'
-import { LoggeedInBadge, NavBar, NavItem } from './navigation.styles'
+import {
+  LoggeedInBadge,
+  LogoutButton,
+  NavBar,
+  NavItem,
+} from './navigation.styles'
 
 export const Navigation = observer(() => {
   const router = useRouter()
@@ -19,7 +24,14 @@ export const Navigation = observer(() => {
         </NavItem>
       </div>
       <LoggeedInBadge>
-        Logged in as <strong>{userStore.getUserName()}</strong>
+        Hello <strong>{userStore.getUserName()}</strong>!
+        <LogoutButton
+          onClick={() => {
+            userStore.logout()
+          }}
+        >
+          Logout
+        </LogoutButton>
       </LoggeedInBadge>
     </NavBar>
   )

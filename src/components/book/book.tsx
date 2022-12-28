@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react-lite'
+import { useState } from 'react'
 
 import basketStore from '../../stores/basket/basket-store'
+import Modal from '../modal/modal'
 
 import {
   BasketButton,
@@ -11,19 +13,31 @@ import {
 import { BookProps } from './book.types'
 
 export const Book = observer(({ book }: BookProps) => {
+  const [openModal, setOpenModal] = useState(false)
+
   return (
-    <BookStyled>
-      <LinkStyled href="/product-detail">
-        <strong>{book.title}</strong>
-        <PriceStyled>Price {book.price}€</PriceStyled>
-      </LinkStyled>
-      <BasketButton
-        onClick={() => {
-          basketStore.addToBasket(book)
-        }}
-      >
-        Add To Basket
-      </BasketButton>
-    </BookStyled>
+    <>
+      <Modal
+        title={`Add "${book.title}"?`}
+        content="Do you want to add this book to your basket?"
+        customCallBack={() => basketStore.addToBasket(book)}
+        setShow={setOpenModal}
+        show={openModal}
+        submitButtonTitle="Yes"
+      />
+      <BookStyled>
+        <LinkStyled href="/product-detail">
+          <strong>{book.title}</strong>
+          <PriceStyled>Price {book.price}€</PriceStyled>
+        </LinkStyled>
+        <BasketButton
+          onClick={() => {
+            setOpenModal(true)
+          }}
+        >
+          Add To Basket
+        </BasketButton>
+      </BookStyled>
+    </>
   )
 })

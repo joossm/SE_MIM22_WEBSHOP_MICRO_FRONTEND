@@ -37,3 +37,13 @@ export const LoggeedInBadge = styled.p`
   margin: 0;
   font-size: 12px;
 `
+
+export const LogoutButton = styled.button`
+  background-color: white;
+  color: rgb(52, 120, 255);
+
+  :hover {
+    background-color: white;
+    color: rgba(78, 137, 254, 1);
+  }
+`

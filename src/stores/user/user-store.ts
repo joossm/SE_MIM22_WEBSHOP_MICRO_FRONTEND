@@ -20,6 +20,11 @@ class UserStore {
     this.user = dummyUser
   }
 
+  logout(): void {
+    this.isLoggedIn = false
+    this.user = undefined
+  }
+
   getUserName(): string {
     return this.user?.userName || ''
   }

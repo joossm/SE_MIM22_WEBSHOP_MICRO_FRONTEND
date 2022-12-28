@@ -7,9 +7,18 @@ body {
 button {
   font-family: 'Poppins', sans-serif;
   cursor: pointer;
+
+  background-color: rgb(52, 120, 255);
+  color: white;
+  padding: 5px 20px;
+  border: none;
+  cursor: pointer;
 }
 button:disabled {
   cursor: auto;
+}
+button:hover {
+  background-color: rgba(78, 137, 254, 1);
 }
 
 input {
@@ -18,7 +27,6 @@ input {
   margin-bottom: 10px;
 }
 
-h1,
 h2 {
   background-color: white;
   padding: 10px 20px;
