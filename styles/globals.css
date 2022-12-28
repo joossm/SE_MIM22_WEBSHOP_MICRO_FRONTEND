@@ -1,0 +1,19 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+  background-color: rgb(246, 248, 252);
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+}
+button:disabled {
+  cursor: auto;
+}
+
+input {
+  font-family: 'Poppins', sans-serif;
+  padding: 5px;
+  margin-bottom: 10px;
+}
