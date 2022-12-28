@@ -5,12 +5,7 @@ import Login from './login'
 import Overview from './overview'
 
 function Home() {
-  return (
-    <>
-      <h1>Book Store</h1>
-      {userStore.isLoggedIn ? <Overview /> : <Login />}
-    </>
-  )
+  return <>{userStore.isLoggedIn ? <Overview /> : <Login />}</>
 }
 
 export default observer(Home)

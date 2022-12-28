@@ -16,10 +16,18 @@ export const BookStyled = styled.div`
 export const LinkStyled = styled(Link)`
   text-decoration: none;
   color: black;
+
+  :hover {
+    color: blue;
+  }
 `
 
-export const BasketButton = styled.button``
+export const BasketButton = styled.button`
+  margin-top: auto;
+`
 
 export const PriceStyled = styled.p`
   justify-self: flex-end;
+  margin-top: auto;
+  font-size: 14px;
 `

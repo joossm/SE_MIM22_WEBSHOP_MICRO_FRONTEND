@@ -10,7 +10,7 @@ export const LoginForm = () => {
 
   return (
     <>
-      <h2>Login</h2>
+      <h3>Login</h3>
       <LoginField>
         <input
           placeholder="User Name"

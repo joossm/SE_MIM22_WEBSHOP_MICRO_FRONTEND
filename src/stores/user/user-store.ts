@@ -19,6 +19,10 @@ class UserStore {
     this.isLoggedIn = true
     this.user = dummyUser
   }
+
+  getUserName(): string {
+    return this.user?.userName || ''
+  }
 }
 
 const userStore = new UserStore()

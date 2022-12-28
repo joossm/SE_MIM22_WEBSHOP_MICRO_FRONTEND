@@ -20,7 +20,6 @@ export const Book = observer(({ book }: BookProps) => {
       <BasketButton
         onClick={() => {
           basketStore.addToBasket(book)
-          console.log('>>> ', basketStore.basket)
         }}
       >
         Add To Basket

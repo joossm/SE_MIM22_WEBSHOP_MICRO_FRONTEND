@@ -7,7 +7,6 @@ import { Navigation } from '../src/components/navigation/navigation'
 function Overview() {
   return (
     <>
-      <Navigation />
       <BookList books={dummies} />
     </>
   )
