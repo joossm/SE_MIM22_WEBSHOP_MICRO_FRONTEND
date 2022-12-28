@@ -1,4 +1,4 @@
-import { makeObservable, observable } from 'mobx'
+import { computed, makeObservable, observable } from 'mobx'
 
 import { BookT } from '../../components/book/book.types'
 import userStore from '../user/user-store'
@@ -15,6 +15,7 @@ class BasketStore {
   constructor() {
     makeObservable(this, {
       basket: observable,
+      isEmpty: computed,
     })
     this.basket = {
       basketId: 1,
@@ -44,6 +45,10 @@ class BasketStore {
     })
     console.log(amount)
     return amount
+  }
+
+  get isEmpty(): boolean {
+    return this.basket.books.length === 0
   }
 }
 
