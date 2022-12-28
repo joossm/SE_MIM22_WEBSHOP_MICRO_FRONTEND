@@ -16,4 +16,8 @@ export const RegisterButton = styled.button`
   font-size: 12px;
   padding-left: 5px;
   padding-right: 5px;
+
+  :hover {
+    background-color: rgb(246, 248, 252);
+  }
 `
