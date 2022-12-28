@@ -28,12 +28,12 @@ class BasketStore {
     const addedBook = this.basket.books.find(
       basketEntry => basketEntry.book === book
     )
-    console.log(addedBook)
+
     if (addedBook) {
       addedBook.amount += 1
       console.log(this.basket.books)
     } else {
-      this.basket?.books.push({ book, amount: 0 })
+      this.basket?.books.push({ book: book, amount: 1 })
     }
   }
 
