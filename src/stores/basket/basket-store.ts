@@ -1,3 +1,4 @@
+import { randomInt } from 'crypto'
 import { computed, makeObservable, observable } from 'mobx'
 
 import { BookT } from '../../components/book/book.types'
@@ -26,7 +27,7 @@ class BasketStore {
   }
 
   get isEmpty(): boolean {
-    return this.basket !== undefined && this.basket?.books.length === 0
+    return this.basket === undefined || this.basket?.books.length === 0
   }
 
   get basketAmount(): number {
@@ -53,17 +54,25 @@ class BasketStore {
   }
 
   addToBasket(book: BookT): void {
-    const addedBook = this.basket?.books.find(
-      basketEntry => basketEntry.book.id === book.id
-    )
+    if (this.basket) {
+      const addedBook = this.basket?.books.find(
+        basketEntry => basketEntry.book.id === book.id
+      )
 
-    if (addedBook) {
-      // TODO call endpoint
-      addedBook.amount += 1
+      if (addedBook) {
+        // TODO call endpoint
+        addedBook.amount += 1
+        return
+      }
     } else {
       // TODO call endpoint
-      this.basket?.books.push({ book: book, amount: 1 })
+      this.basket = {
+        basketId: 2,
+        books: [],
+        customerId: 1,
+      }
     }
+    this.basket?.books.push({ book: book, amount: 1 })
   }
 }
 

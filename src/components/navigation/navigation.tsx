@@ -29,6 +29,7 @@ export const Navigation = observer(() => {
         <LogoutButton
           onClick={() => {
             userStore.logout()
+            basketStore.basket = undefined
           }}
         >
           Logout
