@@ -1,0 +1,15 @@
+#  --------------------------------------------------------------------------------
+version: '3.8'
+services:
+  bookstorefrontend:
+    networks:
+      - bookstore
+    build: ./
+    container_name: bookstorefrontend
+    working_dir: /book-store
+    ports:
+      - "3000:3000"
+
+networks:
+  bookstore:
+    name: "bookstore"
