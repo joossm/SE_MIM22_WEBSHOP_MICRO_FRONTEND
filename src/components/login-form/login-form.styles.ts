@@ -5,3 +5,9 @@ export const LoginField = styled.div`
   align-items: center;
   flex-direction: column;
 `
+
+export const ErrorStyled = styled.p`
+  color: red;
+
+  font-size: '14px';
+`

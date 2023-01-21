@@ -1,51 +1,63 @@
-import {useRouter} from 'next/router'
-import {KeyboardEvent, useState} from 'react'
+import { useRouter } from 'next/router'
+import { KeyboardEvent, useState } from 'react'
 
 import userStore from '../../stores/user/user-store'
 
-import {LoginField} from './login-form.styles'
+import { ErrorStyled, LoginField } from './login-form.styles'
 
 export const LoginForm = () => {
-    const [userName, setUserName] = useState('')
-    const [password, setPassword] = useState('')
-    const router = useRouter()
+  const [userName, setUserName] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const router = useRouter()
 
-    function login(e: KeyboardEvent<HTMLInputElement>): void {
-        if (e.key === 'Enter') {
-            if (userName !== '' && password !== '') {
-                userStore.login(userName, password)
-                router.push('/')
-            }
+  async function login(e: KeyboardEvent<HTMLInputElement>): Promise<void> {
+    if (e.key === 'Enter') {
+      if (userName !== '' && password !== '') {
+        console.log('Here')
+
+        const loginResp = await userStore.login(userName, password)
+        console.log('loginResp', loginResp)
+        if (loginResp) {
+          router.push('/')
+        } else {
+          setError('Error during login')
         }
+      }
     }
+  }
 
-    return (
-        <>
-            <h3>Login</h3>
-            <LoginField>
-                <input
-                    placeholder="User Name"
-                    value={userName}
-                    onChange={e => setUserName(e.target.value)}
-                    onKeyDown={login}
-                />
-                <input
-                    placeholder="Password"
-                    type="password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    onKeyDown={login}
-                />
-            </LoginField>
-            <button
-                disabled={userName === '' || password === ''}
-                onClick={() => {
-                    userStore.login(userName, password)
-                    router.push('/')
-                }}
-            >
-                Login
-            </button>
-        </>
-    )
+  return (
+    <>
+      <h3>Login</h3>
+      <LoginField>
+        <input
+          placeholder="User Name"
+          value={userName}
+          onChange={e => setUserName(e.target.value)}
+          onKeyDown={login}
+        />
+        <input
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          onKeyDown={login}
+        />
+        {error && (
+          <ErrorStyled style={{ color: 'red', fontSize: '14px' }}>
+            {error}
+          </ErrorStyled>
+        )}
+      </LoginField>
+      <button
+        disabled={userName === '' || password === ''}
+        onClick={async () => {
+          await userStore.login(userName, password)
+        }}
+      >
+        Login
+      </button>
+    </>
+  )
 }
