@@ -31,8 +31,8 @@ export const RegisterForm = () => {
           phone: '',
         }}
         onSubmit={values => {
-          // TODO add register functionality
-          userStore.register(values).then(success => {
+          // ID wont be used anyways
+          userStore.register({ id: '1', ...values }).then(success => {
             if (success) {
               router.push('/')
             } else {

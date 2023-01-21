@@ -21,7 +21,7 @@ export const LoginForm = () => {
         if (loginResp) {
           router.push('/')
         } else {
-          setError('Error during login')
+          setError('Login credentials are incorrect')
         }
       }
     }

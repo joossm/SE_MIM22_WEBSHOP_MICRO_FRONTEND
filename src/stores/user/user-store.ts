@@ -1,12 +1,18 @@
 import { makeObservable, observable } from 'mobx'
-import { loginUser } from '../../api/login'
-import { registerUser } from '../../api/register'
+import { loginUser } from '../../api/user/login'
+import { registerUser } from '../../api/user/register'
 
 import { dummyUser } from './user-store.dummy'
+import {
+  deleteUserFromLocalStorage,
+  getUserFromLocalStorage,
+  mapToUserObject,
+  saveUserInLocalStorage,
+} from './user-store.helper'
 import { UserT } from './user-store.types'
 
 class UserStore {
-  user?: UserT
+  user?: UserT = getUserFromLocalStorage()
 
   isLoggedIn = false
 
@@ -23,6 +29,7 @@ class UserStore {
 
       if (result === 'true') {
         this.user = user
+        saveUserInLocalStorage(this.user)
         return true
       }
       return false
@@ -34,9 +41,10 @@ class UserStore {
   async login(userName: string, password: string): Promise<boolean> {
     try {
       const result = await loginUser(userName, password)
-      if (result === 'true') {
+      if (result !== 'false') {
         this.isLoggedIn = true
-        this.user = { ...dummyUser, userName: userName, password: password }
+        this.user = mapToUserObject(result)
+        saveUserInLocalStorage(this.user)
         return true
       }
       return false
@@ -51,6 +59,7 @@ class UserStore {
   logout(): void {
     this.isLoggedIn = false
     this.user = undefined
+    deleteUserFromLocalStorage()
   }
 
   getUserName(): string {

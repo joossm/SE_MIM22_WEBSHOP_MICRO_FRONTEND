@@ -8,6 +8,5 @@ export const LoginField = styled.div`
 
 export const ErrorStyled = styled.p`
   color: red;
-
   font-size: '14px';
 `

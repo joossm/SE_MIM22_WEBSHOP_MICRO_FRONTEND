@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { env } from 'process'
-import { UserT } from '../stores/user/user-store.types'
+import { UserT } from '../../stores/user/user-store.types'
 
 export async function loginUser(
   userName: string,
@@ -10,6 +10,6 @@ export async function loginUser(
     Username: userName,
     Password: password,
   })
-  console.log('>>> response ', response)
+
   return response.data
 }
