@@ -1,5 +1,5 @@
-import { BookT } from '../book/book.types'
+import {BookT} from '../book/book.types'
 
 export interface BookListT {
-  books: BookT[]
+    books: BookT[]
 }

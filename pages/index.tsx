@@ -1,9 +1,9 @@
-import { observer } from 'mobx-react-lite'
+import {observer} from 'mobx-react-lite'
 
 import Overview from './overview'
 
 function Home() {
-  return <Overview />
+    return <Overview/>
 }
 
 export default observer(Home)

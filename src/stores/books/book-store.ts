@@ -1,15 +1,15 @@
-import { makeObservable, observable } from 'mobx'
+import {makeObservable, observable} from 'mobx'
 
-import { dummies } from '../../components/book/book.dummies'
-import { BookT } from '../../components/book/book.types'
+import {dummies} from '../../components/book/book.dummies'
+import {BookT} from '../../components/book/book.types'
 
 class BookStore {
-  books: BookT[] = []
+    books: BookT[] = []
 
-  constructor() {
-    makeObservable(this, {
-      books: observable,
-    })
-    this.books = dummies
-  }
+    constructor() {
+        makeObservable(this, {
+            books: observable,
+        })
+        this.books = dummies
+    }
 }

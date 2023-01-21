@@ -24,8 +24,8 @@ export const NavItem = styled(Link)<{ active: boolean }>`
   margin-right: 10px;
   text-decoration: none;
   font-weight: 500;
-  color: ${({ active }) => (active ? 'black' : 'grey')};
-  background-color: ${({ active }) =>
+  color: ${({active}) => (active ? 'black' : 'grey')};
+  background-color: ${({active}) =>
     active ? 'rgb(246, 248, 252)' : 'white'};
 
   :hover {

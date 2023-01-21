@@ -1,9 +1,9 @@
-import { observer } from 'mobx-react-lite'
+import {observer} from 'mobx-react-lite'
 
-import { LoginModal } from '../src/components/login-modal/login-modal'
+import {LoginModal} from '../src/components/login-modal/login-modal'
 
 function Login() {
-  return <LoginModal />
+    return <LoginModal/>
 }
 
 export default observer(Login)

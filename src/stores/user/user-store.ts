@@ -1,33 +1,33 @@
-import { makeObservable, observable } from 'mobx'
+import {makeObservable, observable} from 'mobx'
 
-import { dummyUser } from './user-store.dummy'
-import { UserT } from './user-store.types'
+import {dummyUser} from './user-store.dummy'
+import {UserT} from './user-store.types'
 
 class UserStore {
-  user?: UserT
+    user?: UserT
 
-  isLoggedIn = false
+    isLoggedIn = false
 
-  constructor() {
-    makeObservable(this, {
-      user: observable,
-      isLoggedIn: observable,
-    })
-  }
+    constructor() {
+        makeObservable(this, {
+            user: observable,
+            isLoggedIn: observable,
+        })
+    }
 
-  login(userName: string, password: string): void {
-    this.isLoggedIn = true
-    this.user = { ...dummyUser, userName: userName, password: password }
-  }
+    login(userName: string, password: string): void {
+        this.isLoggedIn = true
+        this.user = {...dummyUser, userName: userName, password: password}
+    }
 
-  logout(): void {
-    this.isLoggedIn = false
-    this.user = undefined
-  }
+    logout(): void {
+        this.isLoggedIn = false
+        this.user = undefined
+    }
 
-  getUserName(): string {
-    return this.user?.userName || ''
-  }
+    getUserName(): string {
+        return this.user?.userName || ''
+    }
 }
 
 const userStore = new UserStore()
