@@ -34,7 +34,7 @@ export const BasketList = observer(() => {
                   </BasketEntryInfo>
                   <BasketEntryInfo>{basketEntry.amount}</BasketEntryInfo>
                   <BasketEntryInfo>
-                    {basketEntry.amount * basketEntry.book.price}€
+                    {parseInt(basketEntry.amount) * basketEntry.book.price}€
                   </BasketEntryInfo>
                 </BasketEntry>
               )
@@ -47,7 +47,7 @@ export const BasketList = observer(() => {
               router.push('/basket/success')
             }}
           >
-            Buy for {basketStore.basketAmount}€
+            Buy for {basketStore.basketAmount.toFixed(2)}€
           </BuyButton>
         </>
       ) : (

@@ -3,6 +3,7 @@ import { getOrdersByUser } from '../../api/basket/get-orders-by-user'
 import { placeOrder } from '../../api/basket/place-order'
 
 import { BookT } from '../../components/book/book.types'
+import { mapBasket } from './basket-store.helper'
 
 import { BasketT } from './basket-store.types'
 
@@ -16,11 +17,6 @@ class BasketStore {
       basketAmount: computed,
       numberOfBooks: computed,
     })
-    this.basket = {
-      basketId: 1,
-      books: [],
-      customerId: 1,
-    }
   }
 
   get isEmpty(): boolean {
@@ -31,7 +27,7 @@ class BasketStore {
     let price = 0
     if (this.basket?.books) {
       this.basket?.books.forEach(entry => {
-        price += entry.amount * entry.book.price
+        price += parseInt(entry.amount) * entry.book.price
       })
     }
 
@@ -42,7 +38,7 @@ class BasketStore {
     let amount = 0
     if (this.basket && this.basket.books) {
       this.basket?.books.forEach(book => {
-        amount += book.amount
+        amount += parseInt(book.amount)
       })
     }
 
@@ -77,7 +73,8 @@ class BasketStore {
       const basketFromBackend = await getOrdersByUser(userId)
 
       if (basketFromBackend) {
-        this.basket = basketFromBackend
+        this.basket = mapBasket(basketFromBackend)
+        console.log('>>> basketFrom', basketFromBackend)
       }
     } catch (error) {
       console.log('>>> Error in getBasket ', error)

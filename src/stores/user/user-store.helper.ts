@@ -24,8 +24,6 @@ export function saveUserInLocalStorage(user: UserT): void {
 
 export function getUserFromLocalStorage(): UserT | undefined {
   if (typeof window !== 'undefined') {
-    // const userString = store.get('user')
-    // console.log(userString)
     return store.get('user')
   }
 
